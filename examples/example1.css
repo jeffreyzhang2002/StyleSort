@@ -1,0 +1,16 @@
+div {
+    background-color: red;
+    width: 100%;
+    border-radius: 4px;
+    margin-left: 1em;
+    display: grid;
+}
+
+main {
+    background-color: red;
+    width: 100%;
+    border-radius: 4px;
+    margin-left: 1em;
+    display: grid;
+}
+

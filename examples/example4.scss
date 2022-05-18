@@ -1,0 +1,30 @@
+div main:hover {
+    background-color: red;
+    width: 100%;
+    border-radius: 4px;
+    margin-left: 1em;
+    display: grid;
+
+    .a {
+        background-clip:border-box;
+        background-origin:abs(0) abs(0);
+    }
+
+    .b {
+
+        box-shadow: aqua;
+        border-top: aliceblue;
+    }
+
+    background-origin: border-box;
+}
+
+#id2::before {
+    background-color: red;
+    width: 100%;
+    border-radius: 4px;
+    margin-left: 1em;
+    display: grid;
+}
+
+

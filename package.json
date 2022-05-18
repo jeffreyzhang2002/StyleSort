@@ -1,0 +1,21 @@
+{
+  "name": "stylesort",
+  "version": "1.0.0",
+  "description": "Reorder CSS properties programatically",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "stylesort": "bin/index.js"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "Jeff",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^17.5.1"
+  }
+}
