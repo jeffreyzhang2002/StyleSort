@@ -1,16 +1,7 @@
 import fs from "fs";
 import Block from "./Block.js";
 
-export default function Parser(path) {
-
-    let file;
-
-    try {
-        file = fs.readFileSync(path, "utf8").trim();
-    } catch (exception) {
-        console.log("No such file");
-        process.exit(-1);
-    }
+export default function Parser(file) {
 
     const stack = [new Block()];
 
@@ -35,6 +26,8 @@ export default function Parser(path) {
                 stack.at(-1).addCharacter(character);
         }
     }
+
+    console.log(stack[0]);
 
     return stack[0];
 }

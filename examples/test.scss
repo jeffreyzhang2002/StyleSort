@@ -1,0 +1,27 @@
+// this is a comment
+
+
+div main:hover {
+    display: block;
+    position: relative;
+    background-color: aqua;
+    color: red;
+    font-size: 9em;
+
+    .a {
+        background-color: aqua;
+        color: red;
+    }
+
+    .b {
+        background-color: aqua;
+        color: red;
+    }
+}
+
+#id2::before {
+    position: relative;
+    background-color: aqua;
+    color: red;
+    font-size: 9em;
+}
