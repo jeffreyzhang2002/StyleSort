@@ -9,16 +9,19 @@ Style sort is a simple script that reorders your css or scss properties to follo
     npx stylesort <file.css> [options]
     npx stylesort <file.css> -o <output_file_name.css>
     npx stylesort <file.css> -c <config.txt>
+    npx stylesort <file.scss> -s "   "
 ```
 
 |Options| Description|
 |--|--|
 |-c| config file|
 |-o| output file name|
+|-s| Indentation defaults to 4 spaces| 
 
-By default the properties will be reorder to follow [these](https://9elements.com/css-rule-order/) principle. But by using the `-c or --config` flag we can specify the order or the properties manually.
 
-## Example Config File Structure
+## Config File Structure
+
+Note: A default config file is provided and can be found in the config folder. The basic order followed is outside in. Properties that control position go first, then how internals are displayed and finally background and colors.
 
 ```
 *
@@ -29,13 +32,14 @@ font-size
 font-weight
 ```
 
-CSS config tokens:
+Special tokens in config files:
 
 | Token | Reference|
 |--|--|
-|-| CSS variables|
-|/| CSS comments |
-|*| CSS selectors|
+|@| SASS mixins |
+|- | CSS variables|
+|/ | CSS comments |
+|* | CSS selectors|
 
 ## License
 > MIT
