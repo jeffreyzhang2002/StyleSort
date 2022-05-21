@@ -1,17 +1,16 @@
+/
+@
+-
 image-rendering
 table-layout
-
 content
 box-sizing
 all
-
 counter-reset
 counter-increment
-
 page-break-after
 page-break-before
 page-break-inside
-
 position
 z-index
 left
@@ -241,3 +240,4 @@ accent-color
 caret-color
 box-decoration-break;
 empty-cells
+*
