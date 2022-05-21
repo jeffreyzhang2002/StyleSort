@@ -1,9 +1,8 @@
-import fs from "fs";
-import Block from "./Block.js";
+import CodeBlock from "./CodeBlock.js";
 
 export default function Parser(file) {
 
-    const stack = [new Block()];
+    const stack = [new CodeBlock()];
 
     for(const character of file) {
 
@@ -15,7 +14,7 @@ export default function Parser(file) {
 
             case '{':
                 stack.at(-1).checkBracket();
-                stack.push(new Block());
+                stack.push(new CodeBlock());
                 continue;
 
             case '}':
@@ -27,7 +26,5 @@ export default function Parser(file) {
         }
     }
 
-    console.log(stack[0]);
-
-    return stack[0];
+    return stack[0].clean();
 }

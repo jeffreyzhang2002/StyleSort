@@ -1,22 +1,25 @@
 function getPosition(property, order) {
 
-    const position = order.indexOf(property);
+    let position = order.indexOf(property);
 
-    if(position >= 0) {
-        return position;
-    }
+    if(position < 0)
+        position = order.indexOf(property[0]);
 
-    return property.startsWith("/")? order.indexOf("/") : order.indexOf("*");
+    if(position < 0)
+        position = order.indexOf("*");
 
+    return position;
 }
 
 export default function Reorder(parseTree, orderList) {
 
+    if(parseTree.lines.length == 0)
+        return parseTree;
+
     const groups = [];
 
     for(const line of parseTree.lines) {
-        const l = line.trim();
-        groups.push({property: l.slice(0, l.indexOf(":")), line: line})
+        groups.push({property: line.slice(0, line.indexOf(":")).toLowerCase(), line: line})
     }
 
     groups.sort((a, b)=>{return getPosition(a.property, orderList) - getPosition(b.property, orderList)});
@@ -24,4 +27,6 @@ export default function Reorder(parseTree, orderList) {
     for(let i = 0; i < groups.length; i++) {
         parseTree.lines[i] = groups[i].line;
     }
+
+    return parseTree;
 }

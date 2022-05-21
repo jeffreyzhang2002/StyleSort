@@ -1,8 +1,0 @@
-/
--
-display
-position
-background-color
-color
-font-size
-*

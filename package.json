@@ -1,6 +1,6 @@
 {
   "name": "stylesort",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reorder CSS properties programatically",
   "main": "bin/index.js",
   "type": "module",

@@ -1,6 +1,4 @@
-export default class Block {
-
-    static includeComments = true;
+export default class CodeBlock {
 
     constructor() {
         this.lines = [""];
@@ -10,21 +8,21 @@ export default class Block {
 
     newLine() {
         if (this.lines.at(-1) != "") {
-            this.lines.at(-1).trim();
+            this.lines[this.lines.length - 1] = this.lines.at(-1).trim();
             this.lines.push("");
-
         }
     }
 
     checkBracket() {
         if(this.lines.at(-1) == '')
             this.lines.pop();
-        this.headers.push(this.lines.pop());
+        this.headers.push(this.lines.pop().trim());
     }
 
     clean() {
-        while(this.lines.at(-1) == '')
+        while(this.lines.length > 0 && this.lines.at(-1).trim() == '') {
             this.lines.pop()
+        }
 
         return this;
     }

@@ -6,9 +6,6 @@ import Convert from "../src/Convert.js";
 import * as Path from "path";
 import * as FS from "fs";
 
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const argv = Yargs(process.argv.slice(2))
     .option("config", {
@@ -21,9 +18,14 @@ const argv = Yargs(process.argv.slice(2))
         describe: "output file path",
         type: "string"
     })
+    .option("spacing", {
+        alias: "s",
+        describe: "indentation",
+        type: "string"
+    })
     .parseSync();
 
-let order, file;
+let config, file;
 
 const fileExtension = (argv._[0].substring(argv._[0].lastIndexOf('.')+1, argv._[0].length) || argv._[0]).toLowerCase();
 
@@ -33,14 +35,14 @@ if(fileExtension != "css" && fileExtension != "scss") {
 }
 
 try {
-    order = FS.readFileSync(argv.config? Path.resolve(process.cwd(), argv.config) : Path.resolve("../config/default.txt"), "utf8").split(/\s+/);
+    config = FS.readFileSync(argv.config? Path.resolve(process.cwd(), argv.config) : Path.resolve("../config/defaultConfig.txt"), "utf8").split(/\s+/);
     file  = FS.readFileSync(Path.resolve(process.cwd(), argv._[0]), "utf8").trim();
 } catch (exception) {
     console.log(`${exception.path} is not a valid path`);
     process.exit(-1);
 }
 
-const content = Convert(Parser(file), order);
+const content = Convert(Parser(file), config, argv.spacing || "    ");
 
 if(!argv.output) {
     console.log("//__Output CSS__")
